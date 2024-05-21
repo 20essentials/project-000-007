@@ -1,0 +1,154 @@
+body,
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.myHeader {
+  padding: 2rem;
+  text-align: center;
+  background-image: repeating-linear-gradient(150deg, magenta 5%, mediumspringgreen 10%);
+  background-size: 400% 400%;
+  animation: cambiar 30s ease infinite;
+
+  h2 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 900;
+    letter-spacing: .5rem;
+    position: relative;
+
+    img {
+      position: relative;
+      width: 2rem;
+      left: -.5rem;
+      z-index: 100;
+      vertical-align: bottom;
+    }
+  }
+}
+
+.myNav {
+  background-color: mediumslateblue;
+  display: flex;
+  justify-content: center;
+  padding: .5rem;
+
+  a {
+    padding: .7rem 1rem;
+    text-decoration: none;
+    color: midnightblue;
+    font-weight: 800;
+    transition: .5s ease;
+    margin-inline: 2px;
+    cursor: pointer;
+  }
+
+  a:hover, .anchor-activo {
+    box-shadow: inset 3px 3px 5px mediumspringgreen, inset -3px -3px 5px mediumspringgreen;
+    color: mediumspringgreen;
+    border-radius: 50%;
+  }
+
+}
+
+.myMain {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  background-color: mediumturquoise;
+  padding: 1rem;
+  gap: 1rem;
+
+  .item {
+    background-color: mistyrose;
+    height: max-content;
+    padding-bottom: .7rem;
+
+
+    img {
+      width: 100%;
+      height: 60%;
+      aspect-ratio: 16 / 9;
+      transition: all .3s ease;
+    }
+
+    img:hover {
+      filter: hue-rotate(60deg);
+    }
+
+    h2 {
+      padding: .7rem;
+      position: relative;
+      cursor: pointer;
+      width: fit-content;
+      transition: all .5s ease;
+      user-select: none;
+
+      &:hover {
+        color: mediumseagreen;
+      }
+    }
+
+    h2::before {
+      content: '';
+      width: 0;
+      height: 3px;
+      position: absolute;
+      background-color: mediumseagreen;
+      top: 85%;
+      transition: all 1s ease;
+      left: .7rem;
+    }
+
+    h2:hover::before {
+      width: 100%;
+    }
+
+    p {
+      padding-inline: .7rem;
+    }
+  }
+}
+
+@keyframes cambiar {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@media (width <= 600px) and (orientation: portrait) {
+  .myNav {
+    a:nth-child(7),
+    a:nth-child(8),
+    a:nth-child(9) {
+      display: none;
+    }
+  }
+  .myMain {
+    .item {
+      h2 {
+        font-size: 1.1rem;
+      }
+      p {
+        font-size: .8rem;
+      }
+    }
+  }
+}
